@@ -1,0 +1,16 @@
+HomeScreen:
+
+
+<HomeScreen>:
+    name: "home_screen"
+    MDFloatLayout:
+        FitImage:
+            source:"Assets/HomeScreenBG3.jpg"
+            color:"teal"
+
+    MDRaisedButton:
+        text: "continue"
+        pos_hint: {'center_x':.5 , 'center_y': .2}
+        on_press:
+            root.manager.current= "menu"
+            root.manager.transition.direction= "right"

@@ -1,0 +1,102 @@
+BaseEightConverter:
+
+<BaseEightConverter>:
+    name: "BaseEightConverter"
+    MDFloatLayout:
+        md_bg_color:(0,0,0,0)
+        Image:
+            source: "Assets/chalkboard.png"
+            pos_hint: {'center_x':0.5 , 'center_y':0.7}
+            size_hint: .5 , .5
+        MDLabel:
+            text: "Base Eight To"
+            pos_hint:{'center_y':0.68}
+            halign:'center'
+            font_size:20
+            font_name:'broken'
+            color:"white"
+            size_hint_y:None
+
+        MDLabel:
+            text: "Decimal"
+            pos_hint:{'center_y':0.63}
+            halign:'center'
+            font_size:25
+            font_name:'broken'
+            color:"white"
+            size_hint_y:None
+
+        MDLabel:
+            id:Answer
+            text: "0"
+            pos_hint:{'center_y':0.32}
+            halign:'center'
+            font_size:80
+            font_name:'Glasket'
+            color:"teal"
+            size_hint_y:None
+            height:self.texture_size[1]
+
+        MDTextField:
+            id:Number
+            hint_text:'Enter a Number'
+            hint_text_color:'teal'
+            pos_hint:{'center_x':0.5,'center_y':0.45}
+            input_filter:'float'
+            size_hint_x:None
+            width:150
+
+        MDRaisedButton:
+            text:'Octal'
+            pos_hint: {'center_x':0.67,'center_y':0.16}
+            halign:'center'
+            font_name:'Big'
+            size_hint: .3 , .065
+            background_color: 0,128/255,128/255,1
+            on_press:root.decimal_to_octal()
+
+        MDRaisedButton:
+            text:'Decimal'
+            pos_hint:{'center_x':0.3 , 'center_y':0.16}
+            size_hint: .3 , .065
+            font_name:'Big'
+            background_color: 0,0,0,0
+            on_press:
+                root.octal_to_decimal()
+    MDNavigationLayout:
+        ScreenManager:
+            Screen:
+                MDTopAppBar:
+                    title: 'Octal To Decimal'
+                    right_action_items:[["refresh-circle", lambda x: root.reset() ]]
+                    left_action_items:[["menu", lambda x: nav_drawer.set_state("open")]]
+                    pos_hint:{'top':1}
+
+                MDNavigationDrawer:
+                    id:nav_drawer
+                    ScrollView:
+                        MDList:
+                            OneLineAvatarListItem:
+                                text:"Binary To Decimal"
+                                on_press:
+                                    root.manager.current="BinaryToDecimal"
+                                    root.manager.transition.direction="right"
+                                ImageLeftWidget:
+                                    source:"logo.png"
+
+                            OneLineAvatarListItem:
+                                text:"Hexa_Decimal To Decimal"
+                                on_press:
+                                    root.manager.current="BaseSixteenConverter"
+                                    root.manager.transition.direction="left"
+                                ImageLeftWidget:
+                                    source:"logo.png"
+
+                            OneLineIconListItem:
+                                text:"Back"
+                                font_style:"Caption"
+                                on_press:
+                                    root.manager.current="menu"
+                                    root.manager.transition.direction="left"
+                                IconLeftWidget:
+                                    icon:"keyboard-backspace"

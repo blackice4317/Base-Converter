@@ -1,0 +1,82 @@
+Menu:
+
+<Menu>:
+    name:"menu"
+    BoxLayout:
+        MDTopAppBar:
+            title: 'Menu'
+            pos_hint:{'top':1}
+
+    Button:
+        id:Base2Screen
+        text:"Button"
+        size_hint: None , None
+        height: 120
+        width: 120
+        background_color:'darkgreen'
+        pos_hint:{'center_x':0.7 , 'center_y':0.65}
+        on_press: root.button_change2()
+        on_release:
+            root.button_change_back2()
+            root.manager.current="BinaryToDecimal"
+            root.manager.transition.direction="right"
+        Image:
+            id:base2
+            source:"Assets/BaseTwo.jpg"
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+
+    Button:
+        id:Base8Screen
+        text:"Button"
+        size_hint: None , None
+        height: 120
+        width: 120
+        background_color:'darkgreen'
+        pos_hint:{'center_x':0.25 , 'center_y':0.65}
+        on_press:
+            root.button_change8()
+        on_release:
+            root.button_change_back8()
+            root.manager.current="BaseEightConverter"
+            root.manager.transition.direction="right"
+        Image:
+            id:base8
+            source:"Assets/BaseEight.jpg"
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+
+    Button:
+        id:Base16Screen
+        text:"Button"
+        size_hint: None , None
+        height: 120
+        width: 120
+        background_color:'darkgreen'
+        pos_hint:{'center_x':0.7 , 'center_y':0.35}
+        on_press: root.button_change16()
+        on_release:
+            root.button_change_back16()
+            root.manager.current="BaseSixteenConverter"
+            root.manager.transition.direction="right"
+        Image:
+            id:base16
+            source:"Assets/BaseSixteen.jpg"
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+
+    Button:
+        id: home
+        size_hint: None , None
+        height: 120
+        width: 120
+        background_color:'darkgreen'
+        pos_hint:{'center_x':0.25 , 'center_y':0.35}
+        on_press:
+            root.manager.current="home_screen"
+            root.manager.transition.direction="right"
+        Image:
+            id:home_btn
+            source:"Assets/logo.png"
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
